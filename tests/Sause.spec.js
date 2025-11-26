@@ -14,29 +14,29 @@ test('Login with all provided usernames', async ({ page }) => {
 
   const password = "secret_sauce";
 
-  // Loop through usernames
+ 
   for (const user of usernames) {
     console.log(`Testing login with: ${user}`);
 
     await page.goto("https://www.saucedemo.com/");
 
-    await page.fill('[data-test="username"]', user);
+    await page.fill('[data-test="username"]', user);             // Fill in username field with current username
     await page.fill('[data-test="password"]', password);
     await page.click('[data-test="login-button"]');
 
-    // Validate result
+   
     if (user === "locked_out_user") {
-      // Expected to see error
-      await expect(page.locator('[data-test="error"]')).toBeVisible();
+   
+      await expect(page.locator('[data-test="error"]')).toBeVisible(); // Verify error message is shown
       console.log(`${user} is locked out (as expected)`);
     } else {
-      // Others should reach inventory page
-      await page.waitForURL("**/inventory.html");
+      
+      await page.waitForURL("**/inventory.html");                 // Wait for navigation to inventory page
       await expect(page.locator('.inventory_list')).toBeVisible();
       console.log(`${user} logged in successfully`);
 
-      // Logout to continue with next user
-      await page.click('#react-burger-menu-btn');
+     
+      await page.click('#react-burger-menu-btn');   // Perform logout
       await page.click('#logout_sidebar_link');
     }
   }
