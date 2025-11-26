@@ -1,5 +1,12 @@
 import { test, expect } from '@playwright/test';
 
+/*
+Requirements:
+Test Coverage: Your test suite should cover the scenario of a user completing a successful checkout. You do not need to cover any negative scenarios.
+Test Framework: The framework must be designed using Javascript/Typescript using any popular automation tool (Playwright, Cypress, Webdriverio, etc).
+Assertions: Include appropriate assertions to verify the correctness of the user's actions.
+Reporting: Implement reporting mechanisms to provide clear feedback on test results.
+*/
 test('Login with all provided usernames', async ({ page }) => {
 
   // List of usernames shown on the page
